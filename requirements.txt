@@ -51,6 +51,7 @@ pydeck==0.9.3
 pymupdf==2.1
 pymupdf4llm==2.1
 pymupdf_layout==2.1
+pypdf==7.0.0
 python-dateutil==4.0.0
 python-dotenv==1.2.4
 python-multipart==0.0.33
