@@ -2,4 +2,4 @@
 
 202234899 배재성
 
-https://ai-test-txhsuhe7kstslfvvg2pjrq.streamlit.app/
+https://ai-test-2ygwzw5bwwgpujww7xve6h.streamlit.app/
