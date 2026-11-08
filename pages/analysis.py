@@ -40,12 +40,19 @@ for key, default_val in {
         st.session_state[key] = default_val
 
 # 환경변수(.env) 우선 확인 후 st.secrets 확인 (불필요한 Secrets 경고가 뜨지 않도록 개선)
-api_key = os.getenv("OPENAI_API_KEY", "")
+api_key = ""
+try:
+    if "OPENAI_API_KEY" in st.secrets:
+        api_key = st.secrets["OPENAI_API_KEY"].strip()
+except Exception:
+    pass
+
 if not api_key:
-    try:
-        api_key = st.secrets.get("OPENAI_API_KEY", "")
-    except Exception:
-        api_key = ""
+    api_key = os.getenv("OPENAI_API_KEY", "").strip()
+
+# ★ 가져온 키를 시스템 환경변수에도 명시적으로 등록 (LangChain 내부 오류 방지)
+if api_key:
+    os.environ["OPENAI_API_KEY"] = api_key
 
 # 좌측 사이드바: 파일 업로드 및 버튼
 with st.sidebar:
